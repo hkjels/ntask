@@ -1,0 +1,12 @@
+# Directories
+docs
+node_modules
+.todo
+
+
+# Filetypes
+*.css
+
+
+# Files
+.DS_Store

@@ -1,0 +1,52 @@
+base-size= 16px
+
+body
+  font: base-size "Helvetica neue", Helvetica, "Lucida Grande", Arial
+
+header-font-size = base-size
+for num in 6 5 4 3 2 1
+  h{num}
+    font-size: header-font-size
+    line-height: 1.5em
+    padding-top: 1em
+  header-font-size += 10px
+
+b, strong /* Hold on. Get it? */
+  font-weight: bold
+
+em, i
+  font-style: italic
+
+th
+  font-weight: bold
+  line-height: 72px
+
+td
+  line-height: 48px
+
+input
+  font-size: base-size
+
+small
+  font-size: 0.8em
+
+p, pre
+  margin-top: 1.5em
+
+a
+  color: sky
+  text-decoration: none
+
+pre, code
+  font-family: Monaco, Monospace
+  font-size: 12px
+  line-height: (12px * 1.5)
+
+.string
+  color: lighterred
+.number
+  color: lighterblue
+.keyword
+  font-weight: bold
+.comment
+  color: lightergray

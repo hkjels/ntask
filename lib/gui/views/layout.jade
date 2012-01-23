@@ -1,0 +1,17 @@
+!!!
+html
+  head
+    meta(name='charset', content='utf-8')
+    meta(name='application-name', content=meta.name)
+    meta(name='author', content=meta.author)
+    meta(name='description', content=meta.description)
+    meta(name='keywords', content=meta.keywords.join(','))
+    meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
+    title= meta.name
+    link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Satisfy')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body(class=(typeof task !== 'undefined' ? task.labels[0] + ' task' : null))
+    #wrapper
+      != partial('_/header')
+      != body
+      != partial('_/footer')

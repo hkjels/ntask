@@ -1,0 +1,72 @@
+#!/usr/bin/env node
+
+/**
+ * Module dependencies
+ */
+
+var todo = require('../')
+  , path = require('path')
+  , program = require('commander')
+
+// Options
+
+program
+  .version(todo.version)
+  .option('-q, --quiet', 'Will run without output')
+
+// Initialize a new project
+
+program
+  .command('init [path]')
+  .action(function (fpath) {
+    if (todo.Project.init(fpath)) console.log('Initialized project')
+    else console.error('Project already exists')
+  })
+
+// Update project
+
+program
+  .command('update [path,]')
+  .action(function () {
+    arguments = arguments.length ? Array.prototype.slice.call(arguments) : [PWD]
+    todo.Taskpool.update(arguments, function (err, updates) {
+      if (err) return console.error('\n   '+err.message+'\n')
+      console.log('')
+      if (updates.added.length) console.log('   '+updates.added.length+' task(s) was added')
+      if (updates.modified.length) console.log('   '+updates.modified.length+' task(s) was modified')
+      if (updates.removed.length) console.log('   '+updates.removed.length+' task(s) was removed')
+      console.log('\n   '+new Array(23).join('-'))
+      console.log('   Taskpool is up to date')
+      console.log('   '+new Array(23).join('-')+'\n')
+    })
+  })
+
+// Perform a search
+
+program
+  .command('find <query>')
+  .action(function (query) {
+    todo.Taskpool.find(query, function (err, tasks) {
+      if (err) return console.error('\n   '+err.message+'\n')
+      tasks.forEach(function (task) {
+        console.log(task.title)
+      })
+    })
+  })
+
+// Web interface
+
+program
+  .command('gui [port]')
+  .action(function (port) {
+    todo.gui(port)
+  })
+
+// Parse arguments
+
+program
+  .parse(process.argv)
+
+// Prevent output
+
+if (program.quiet) console.log = console.error = function () {}

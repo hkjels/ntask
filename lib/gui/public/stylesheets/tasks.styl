@@ -1,0 +1,80 @@
+#search
+  absolute: top 35px right 0
+  input
+    border: whitesmoke solid 1px
+    border-radius: 4px
+    outline: none
+    margin: 10px auto
+    min-width: 250px
+    padding: 5px 0
+    text-indent: 10px
+    transition: box-shadow 0.3s ease-in-out
+    &:focus
+      border-color: lightersky
+      box-shadow: 0 0 5px lightersky
+
+.tasks
+  border-collapse: collapse
+  width: 100%
+  th
+    background-color: sky
+    color: white
+    min-width: 110px
+    text-shadow: 0 1px 1px rgba(black, 0.5)
+    &:first-child
+      border-radius: top left 4px
+    &:last-child
+      border-radius: top right 4px
+  tr
+    background-color: rgba(white, 0.7)
+    position: relative
+    text-shadow: 0 -1px 0 rgba(white, 0.6)
+    &:last-child
+      border-radius: bottom 4px
+      td
+        &:first-child
+          border-radius: bottom left 4px
+        &:last-child
+          border-radius: bottom right 4px
+    th
+      padding: 0 10px
+  td
+    div
+      border-left: transparent solid 5px
+      max-height: 48px
+      padding: 0 10px 0 5px
+      overflow: hidden
+      text-overflow: ellipsis
+
+.bug
+  td:first-child div:hover
+    border-color: lightred
+
+.todo
+  td:first-child div:hover
+    border-color: lightgreen
+
+.fixme
+  td:first-child div:hover
+    border-color: lightorange
+
+.optimize
+  td:first-child div:hover
+    border-color: lightblue
+
+@media all and (max-width:560px)
+  #search
+    position: static
+    input
+      width: 100%
+  .labels
+    display: none
+
+@media all and (max-width:460px)
+  th:first-child
+    border-radius: top 4px
+  .assignee
+    display: none
+  .tasks tr:last-child
+    td:first-child
+      border-radius: bottom 4px

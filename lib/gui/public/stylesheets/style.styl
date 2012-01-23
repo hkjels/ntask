@@ -1,0 +1,44 @@
+global-reset()
+reset-html5()
+
+@import 'palette'
+@import 'typography'
+@import 'tasks'
+@import 'task'
+
+html, body
+  height: 100%
+  width: 100%
+
+body
+  background: whitetint linear-gradient(top, darken(white, 3), darken(whitetint, 2)) no-repeat fixed
+  &:before
+    absolute: top 0 left 0
+    background-color: transparent
+    content: ' '
+    display: block
+    height: 10px
+    width: 100%
+
+header
+  position: relative
+  h1
+    font-family: 'Satisfy', Cursive
+    padding: 10px 0 0 0
+    &:first-letter
+      text-transform: uppercase
+
+#wrapper
+  margin: 0 auto
+  max-width: 940px
+  padding: 0 10px
+  position: relative
+  text-align: left
+
+footer
+  padding: 1em 0
+  text-align: right
+
+@media all and (max-width:560px)
+  header
+    text-align: center

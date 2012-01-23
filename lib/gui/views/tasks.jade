@@ -1,0 +1,17 @@
+#main
+  table.tasks
+    thead
+      tr
+        th.title Title
+        th.labels Labels (#)
+        th.assignee Assignee (@)
+    tbody
+      - each task in tasks
+        tr(class=task.labels[0].toLowerCase())
+          td.title
+            div
+              a(href='/task/'+encodeURIComponent(task.title)+'/', title=task.title)= task.title
+          td.labels
+            div(title=task.labels.join(', '))= task.labels.join(', ')
+          td.assignee
+            div(title=task.assignee)= task.assignee

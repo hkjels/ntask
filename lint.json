@@ -1,0 +1,20 @@
+{
+   "curly": false
+  ,"eqeqeq": true
+  ,"forin": false
+  ,"immed": false
+  ,"newCap": true
+  ,"noarg": true
+  ,"plusplus": false
+  ,"asi": true
+  ,"boss": true
+  ,"debug": false
+  ,"evil": true
+  ,"lastsemic": false
+  ,"laxbreak": true
+  ,"onecase": true
+  ,"proto": true
+  ,"devel": true
+  ,"node": true
+  ,"indent": 2
+}

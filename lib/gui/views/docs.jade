@@ -1,0 +1,15 @@
+- each doc in docs
+  - if (doc.ignore == false && doc.isPrivate != true)
+    != doc.description.full
+    != doc.description.body
+    - if (doc.tags.length)
+      p
+        code= 
+          - each tag in doc.tags
+            span.keyword= tag.type+' '
+            != tag.types.join(',')+' '
+            span.string= (tag.name || '')+' '
+            != tag.description
+            br
+    pre
+      code= doc.code

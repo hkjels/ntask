@@ -1,0 +1,33 @@
+{
+    "name": "Todo"
+  , "description": "Simplified issue-tracking and project-management"
+  , "keywords": ["todo", "task", "bug", "fixme", "issue", "tracker"]
+  , "version": "0.0.1"
+  , "author": "Henrik Kjelsberg <hkjels@me.com> (http://take.no/)"
+  , "homepage": "https://github.com/hkjels/t/"
+  , "repository": {"type": "git", "url": "git://github.com/hkjels/t.git"}
+  , "licenses": [{"type": "MIT", "url": "http://github.com/hkjels/t/master/LICENSE"}]
+  , "bin": {"t": "bin/todo"}
+  , "bugs": {"url" : "http://github.com/hkjels/t/issues"}
+  , "main": "index"
+  , "engines": {"node": ">= 0.4.1 <= 0.6.0"}
+  , "private": true
+  , "dependencies": {
+      "barricane-db": "latest"
+    , "cli-table": "latest"
+    , "commander": "latest"
+    , "express": "latest"
+    , "jade": "latest"
+    , "moment": "latest"
+    , "op": "0.0.4"
+    , "underscore": "latest"
+  }
+  , "devDependencies": {
+      "dox": "latest"
+    , "jshint": "latest"
+    , "mocha": "latest"
+    , "nib": "latest"
+    , "should": "latest"
+    , "stylus": "latest"
+  }
+}

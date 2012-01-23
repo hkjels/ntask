@@ -1,0 +1,10 @@
+h5= task.title
+p= task.body
+
+p
+  - each label, i in task.labels
+    != i == 0 ? '' : ', '
+    a(href='/find/'+label+'/')= label
+
+p
+  span(title=task.file+':'+task.line)= task.file+':'+task.line
