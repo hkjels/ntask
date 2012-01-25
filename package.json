@@ -1,5 +1,5 @@
 {
-    "name": "t"
+    "name": "Todo"
   , "description": "Taskmanagement, your way!"
   , "keywords": ["todo", "task", "bug", "fixme", "issue", "tracker"]
   , "version": "0.0.1"
