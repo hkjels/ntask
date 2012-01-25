@@ -10,8 +10,7 @@
   , "bin": {"t": "bin/todo"}
   , "bugs": {"url" : "http://github.com/hkjels/t/issues"}
   , "main": "index"
-  , "engines": {"node": ">= 0.4.1 <= 0.6.0"}
-  , "private": true
+  , "engines": {"node": ">= 0.4.1 <= 0.7.0"}
   , "dependencies": {
       "barricane-db": "latest"
     , "cli-table": "latest"
@@ -19,15 +18,15 @@
     , "express": "latest"
     , "jade": "latest"
     , "moment": "latest"
+	, "nib": "latest"
     , "op": "0.0.4"
+	, "stylus": "latest"
     , "underscore": "latest"
   }
   , "devDependencies": {
       "dox": "latest"
     , "jshint": "latest"
     , "mocha": "latest"
-    , "nib": "latest"
     , "should": "latest"
-    , "stylus": "latest"
   }
 }
