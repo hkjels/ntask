@@ -1,6 +1,6 @@
 {
-    "name": "Todo"
-  , "description": "Simplified issue-tracking and project-management"
+    "name": "t"
+  , "description": "Taskmanagement, your way!"
   , "keywords": ["todo", "task", "bug", "fixme", "issue", "tracker"]
   , "version": "0.0.1"
   , "author": "Henrik Kjelsberg <hkjels@me.com> (http://take.no/)"
