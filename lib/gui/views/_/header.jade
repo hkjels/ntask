@@ -4,6 +4,6 @@ header
     a(href='/').back &larr; Back
   - else if (typeof tasks !== 'undefined')
     h1= meta.name
-    form#search
+    form#search(action='/', method='post')
       fieldset
-        input(type='text', placeholder='Filter tasks', autofocus='autofocus')
+        input#filter(name='filter', type='text', placeholder='Filter tasks', value=filter || null)

@@ -1,10 +1,13 @@
 h5= task.title
 p= task.body
 
+form#search(action='/', method='post')
+  fieldset
+    input#filter(name='filter', type='hidden')
 p
-  - each label, i in task.labels
+  each label, i in task.labels
     != i == 0 ? '' : ', '
-    a(href='/find/'+label+'/')= label
+    a.filter(href='#', title='filter by label ('+label+')')= label
 
 p
   span(title=task.file+':'+task.line)= task.file+':'+task.line

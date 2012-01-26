@@ -6,12 +6,18 @@
         th.labels Labels (#)
         th.assignee Assignee (@)
     tbody
-      - each task in tasks
-        tr(class=task.labels[0].toLowerCase())
+      each task in tasks
+        classname = task.labels[0].substr(1).toLowerCase()
+        tr(class=classname)
           td.title
             div
               a(href='/task/'+encodeURIComponent(task.title)+'/', title=task.title)= task.title
           td.labels
-            div(title=task.labels.join(', '))= task.labels.join(', ')
+            div
+              each label in task.labels
+                a.filter(href='#', title='filter by label ('+label+')')= label
+                if (label != task.labels[task.labels.length-1])
+                  ,
           td.assignee
-            div(title=task.assignee)= task.assignee
+            div
+              a.filter(href='#', title='filter by assignee ('+task.assignee+')')= task.assignee

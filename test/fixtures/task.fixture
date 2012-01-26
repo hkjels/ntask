@@ -1,0 +1,13 @@
+// TODO is for planning future tasks
+
+# BUG is for reporting problems
+
+/* FIXME @blame is for really critical issues */
+
+;; OPTIMIZE is for known bottlenecks
+
+/**
+ * OPTIMIZE Quite a few comment-syntaxes are supported
+ * | Assembly, C, Erlang, Javascript, Lisp, Lua, Perl, Php, Python and Ruby
+ * | are all supported languages. #pre[5]
+ */

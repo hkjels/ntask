@@ -15,6 +15,7 @@
   , "dependencies": {
       "barricane-db": "latest"
     , "cli-table": "latest"
+    , "colors": "latest"
     , "commander": "latest"
     , "express": "latest"
     , "jade": "latest"

@@ -5,13 +5,15 @@
  */
 
 var todo = require('../')
-  , path = require('path')
+  , colors = require('colors')
   , program = require('commander')
+  , file = null
 
 // Options
 
 program
   .version(todo.version)
+  .option('-r, --reverse', 'Reverses the output')
   .option('-q, --quiet', 'Will run without output')
 
 // Initialize a new project
@@ -26,18 +28,22 @@ program
 // Update project
 
 program
-  .command('update [path,]')
-  .action(function () {
-    arguments = arguments.length ? Array.prototype.slice.call(arguments) : [PWD]
-    todo.Taskpool.update(arguments, function (err, updates) {
+  .command('update [path]')
+  .action(function (path) {
+    path = [path] || [PWD]
+    todo.Taskpool.update(path, function (err, updates) {
       if (err) return console.error('\n   '+err.message+'\n')
+      var message = 'Taskpool is up to date'
+      /*
+      Not yet available
       console.log('')
       if (updates.added.length) console.log('   '+updates.added.length+' task(s) was added')
       if (updates.modified.length) console.log('   '+updates.modified.length+' task(s) was modified')
       if (updates.removed.length) console.log('   '+updates.removed.length+' task(s) was removed')
-      console.log('\n   '+new Array(23).join('-'))
-      console.log('   Taskpool is up to date')
-      console.log('   '+new Array(23).join('-')+'\n')
+      */
+      console.log('\n   '+new Array(message.length+1).join('-'))
+      console.log('   '+message)
+      console.log('   '+new Array(message.length+1).join('-')+'\n')
     })
   })
 
@@ -48,8 +54,11 @@ program
   .action(function (query) {
     todo.Taskpool.find(query, function (err, tasks) {
       if (err) return console.error('\n   '+err.message+'\n')
+      if (program.reverse) tasks = tasks.reverse()
       tasks.forEach(function (task) {
-        console.log(task.title)
+        if (file != task.file) console.log(task.file.toString().yellow)
+        console.log(task.line.toString().yellow+': '+task.title)
+        file = task.file
       })
     })
   })
@@ -57,9 +66,11 @@ program
 // Web interface
 
 program
-  .command('gui [port]')
-  .action(function (port) {
-    todo.gui(port)
+  .command('gui [path] [port]')
+  .action(function (path, port) {
+    var path = path || PWD
+      , port = port || 3000
+    todo.gui(path, port)
   })
 
 // Parse arguments
