@@ -1,6 +1,5 @@
 # Todo - Work in progress (Launch @ 1st of March)
 
-<<<<<<< HEAD
 ### Taskmanagement, your way!
 
 __Main goal is to make your inline-todos more useful. This is achieved by 
@@ -70,8 +69,3 @@ IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
 CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-=======
-__T is not yet fully ready for the public eye__, but it will be soon and it
-will be worth the wait. Tune back in at the 1st of March and I believe you 
-will witness one piece refreshing software.
->>>>>>> 231387b157aab02c16bb8f841cb1102f87553379
