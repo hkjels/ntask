@@ -36,11 +36,12 @@ program
       var message = 'Taskpool is up to date'
       /*
       Not yet available
+      */
       console.log('')
       if (updates.added.length) console.log('   '+updates.added.length+' task(s) was added')
       if (updates.modified.length) console.log('   '+updates.modified.length+' task(s) was modified')
       if (updates.removed.length) console.log('   '+updates.removed.length+' task(s) was removed')
-      */
+
       console.log('\n   '+new Array(message.length+1).join('-'))
       console.log('   '+message)
       console.log('   '+new Array(message.length+1).join('-')+'\n')
@@ -48,6 +49,7 @@ program
   })
 
 // Perform a search
+// TODO Use find-command by default
 
 program
   .command('find <query>')

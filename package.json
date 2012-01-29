@@ -2,7 +2,7 @@
     "name": "Todo"
   , "description": "Taskmanagement, your way!"
   , "keywords": ["todo", "task", "bug", "fixme", "issue", "tracker"]
-  , "version": "0.0.1"
+  , "version": "0.0.2"
   , "author": "Henrik Kjelsberg <hkjels@me.com> (http://take.no/)"
   , "homepage": "https://github.com/hkjels/t/"
   , "repository": {"type": "git", "url": "git://github.com/hkjels/t.git"}
@@ -19,9 +19,8 @@
     , "express": "latest"
     , "jade": "latest"
     , "moment": "latest"
-	, "nib": "latest"
-    , "op": "0.0.4"
-	, "stylus": "latest"
+	  , "nib": "latest"
+	  , "stylus": "latest"
     , "underscore": "latest"
   }
   , "devDependencies": {
