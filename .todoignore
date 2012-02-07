@@ -1,12 +1,6 @@
 # Directories
-docs
+.git
 node_modules
-.todo
-
-
-# Filetypes
-*.css
-
 
 # Files
 .DS_Store

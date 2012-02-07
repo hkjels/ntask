@@ -12,8 +12,11 @@ var todo = require('../')
 // Options
 
 program
-  .version(todo.version)
-  .option('-r, --reverse', 'Reverses the output')
+  .version(todo.version, '-v, --version')
+  .option('-l, --limit <n>', 'Limit the results output', parseInt)
+  .option('-r, --reverse', 'Oldest first')
+  .option('-C, --no-color', 'Prevent colored output')
+  .option('-G, --no-group', 'Prevent grouping by filename')
   .option('-q, --quiet', 'Will run without output')
 
 // Initialize a new project
@@ -56,12 +59,24 @@ program
   .action(function (query) {
     todo.Taskpool.find(query, function (err, tasks) {
       if (err) return console.error('\n   '+err.message+'\n')
+      if (!tasks.length && program.group) {
+        return console.log('\n   No tasks matched query\n')
+      }
       if (program.reverse) tasks = tasks.reverse()
+      var i = 0
       tasks.forEach(function (task) {
-        if (file != task.file) console.log(task.file.toString().yellow)
-        console.log(task.line.toString().yellow+': '+task.title)
+        if (program.limit > 0 && i == program.limit) return false
+        var message = ''
+        if (program.group && file != task.file) {
+          message += '\n'+task.file.toString().cyan+'\n'
+        }
+        else if (!program.group) message += PWD+'/'+task.file.toString().cyan+':'
+        message += task.line.toString().yellow+':'+task.title
+        console.log(message)
         file = task.file
+        i++
       })
+      if (program.group) console.log('')
     })
   })
 
@@ -83,3 +98,10 @@ program
 // Prevent output
 
 if (program.quiet) console.log = console.error = function () {}
+
+// Prevent colored output
+
+if (!program.color) {
+  String.prototype.__defineGetter__('yellow', function () { return this })
+  String.prototype.__defineGetter__('cyan', function () { return this })
+}
