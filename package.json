@@ -18,6 +18,7 @@
     , "commander": "latest"
     , "express": "latest"
     , "jade": "latest"
+    , "minimatch": "latest"
     , "moment": "latest"
 	  , "nib": "latest"
 	  , "stylus": "latest"
