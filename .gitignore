@@ -2,6 +2,7 @@
 docs
 node_modules
 .todo
+test
 
 
 # Filetypes
@@ -10,3 +11,4 @@ node_modules
 
 # Files
 .DS_Store
+.todoignore

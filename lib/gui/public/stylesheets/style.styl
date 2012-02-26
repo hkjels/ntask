@@ -11,7 +11,7 @@ html, body
   width: 100%
 
 body
-  background: whitetint linear-gradient(top, darken(white, 3), darken(whitetint, 2)) no-repeat fixed
+  background: #222 url(/images/bg.jpg) repeat left top
   &:before
     absolute: top 0 left 0
     background-color: transparent
@@ -23,8 +23,10 @@ body
 header
   position: relative
   h1
-    font-family: 'Satisfy', Cursive
+    color: white
+    font-size: 2.6em
     padding: 10px 0 0 0
+    text-shadow: 0 2px 3px rgba(black, 0.5)
     &:first-letter
       text-transform: uppercase
 
@@ -34,11 +36,17 @@ header
   padding: 0 10px
   position: relative
   text-align: left
+  h2.raleway
+    color: yellow
+    text-shadow: 0 1px 3px black
 
-footer
-  padding: 1em 0
-  text-align: right
+#update
+  box-shadow: 0 1px 8px rgba(black, 0.5)
+  border: black solid 5px
+  border-radius: 8px
 
 @media all and (max-width:560px)
   header
     text-align: center
+  #update
+    float: none

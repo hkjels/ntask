@@ -1,18 +1,30 @@
 BIN = node_modules/.bin
+DOCSRC = $(shell find docs -name '*.md')
+DOCTRG = $(DOCSRC:.md=.html)
 
 
-all: lint test docs
+.PHONY: cleandocs docs install lint mocha
+
+
+all: lint test
+
+cleandocs:
+	rm -f $(DOCTRG)
+
+docs: $(DOCTRG)
 
 install:
-	@rm -Rf node_modules
-	@npm link
+	npm link
 
 lint:
-	@$(BIN)/jshint ./lib/*.js --config lint.json
+	$(BIN)/jshint ./lib/*.js --config lint.json
 
-test:
-	@rm -Rf test/.todo
-	@$(BIN)/mocha --growl --reporter 'dot' --require should ./test/*.test.js
+mocha:
+	rm -Rf test/.todo
+	$(BIN)/mocha --growl --reporter 'dot' --require should ./test/*.test.js
 
-
-.PHONY: install lint test docs
+%.html: %.md
+	@echo "... $< -> $@"
+	@markdown $< \
+	  | cat docs/layout/head.html - docs/layout/foot.html \
+	  > $@

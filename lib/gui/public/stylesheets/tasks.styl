@@ -1,8 +1,10 @@
 #search
-  absolute: top 35px right 0
+  absolute: top 18px right 0
   input
+    background: whitesmoke
     border: whitesmoke solid 1px
     border-radius: 4px
+    box-shadow: 0 1px 3px rgba(black, 0.5)
     outline: none
     margin: 10px auto
     min-width: 250px
@@ -10,14 +12,17 @@
     text-indent: 10px
     transition: box-shadow 0.3s ease-in-out
     &:focus
+      background: white
       border-color: lightersky
-      box-shadow: 0 0 5px lightersky
+      box-shadow: 0 1px 3px rgba(black, 0.5), 0 0 8px lightersky
 
 .tasks
   border-collapse: collapse
   width: 100%
   th
-    background-color: sky
+    background: desaturate(sky, 60) linear-gradient(top, desaturate(sky, 60), darken(desaturate(sky, 40), 10))
+    border-bottom: darken(sky, 30) solid 1px
+    box-shadow: inset 0 1px 0 rgba(white, 0.2)
     color: white
     min-width: 110px
     text-shadow: 0 1px 1px rgba(black, 0.5)
@@ -25,11 +30,16 @@
       border-radius: top left 4px
     &:last-child
       border-radius: top right 4px
+  tbody
+    tr
+      cursor: pointer
   tr
-    background-color: rgba(white, 0.7)
+    background-color: whitesmoke
+    border-bottom: whitetint solid 1px
     position: relative
     text-shadow: 0 -1px 0 rgba(white, 0.6)
     &:last-child
+      border-bottom: none
       border-radius: bottom 4px
       td
         &:first-child
@@ -46,21 +56,33 @@
       overflow: hidden
       text-overflow: ellipsis
 
-.bug
-  td:first-child div:hover
-    border-color: lightred
+.bug:hover
+  td
+    background-color: lightred
+    &:first-child div
+      border-color: red
 
-.todo
-  td:first-child div:hover
-    border-color: lightgreen
+.todo:hover
+  td
+    background-color: lightgreen
+    &:first-child div
+      border-color: lightergreen
 
-.fixme
-  td:first-child div:hover
-    border-color: lightorange
+.fixme:hover
+  td
+    background-color: lightorange
+    &:first-child div
+      border-color: orange
 
-.optimize
-  td:first-child div:hover
-    border-color: lightsky
+.optimize:hover
+  td
+    background-color: lightsky
+    &:first-child div
+      border-color: sky
+
+.done
+  a
+    text-decoration: line-through
 
 @media all and (max-width:560px)
   #search

@@ -7,7 +7,7 @@
         th.assignee Assignee (@)
     tbody
       each task in tasks
-        classname = task.labels[0].substr(1).toLowerCase()
+        classname = task.labels.join(' ').replace(/[^a-z ]*/gi, '').toLowerCase()
         tr(class=classname)
           td.title
             div

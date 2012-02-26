@@ -1,8 +1,8 @@
 header
   - if (typeof task !== 'undefined')
-    h1= task.labels[0]
+    h1.cabin= task.labels[0]
     a(href='/').back &larr; Back
-  - else if (typeof tasks !== 'undefined')
+  - else if (tasks.length)
     h1= meta.name
     form#search(action='/', method='post')
       fieldset
