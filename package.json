@@ -2,7 +2,7 @@
     "name": "Todo"
   , "description": "Taskmanagement, your way!"
   , "keywords": ["todo", "task", "bug", "fixme", "issue", "tracker"]
-  , "version": "0.0.2"
+  , "version": "0.0.3"
   , "author": "Henrik Kjelsberg <hkjels@me.com> (http://take.no/)"
   , "homepage": "https://github.com/hkjels/t/"
   , "repository": {"type": "git", "url": "git://github.com/hkjels/t.git"}

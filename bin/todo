@@ -15,6 +15,7 @@ program
   .version(todo.version, '-v, --version')
   .option('-l, --limit <n>', 'Limit the results output', parseInt)
   .option('-r, --reverse', 'Oldest first')
+  .option('-c, --count', 'Output number of tasks')
   .option('-C, --no-color', 'Prevent colored output')
   .option('-G, --no-group', 'Prevent grouping by filename')
   .option('-q, --quiet', 'Will run without output')
@@ -57,6 +58,7 @@ program
     todo.Taskpool.find(query, function (err, tasks) {
       if (err) return console.error('\n   '+err.message+'\n')
       if (!tasks.length && program.group) return console.log('\n   No tasks matched query\n')
+      if (program.count) return console.log(tasks.length)
       if (program.reverse) tasks = tasks.reverse()
       var i = 0
       tasks.forEach(function (task) {
