@@ -8,14 +8,19 @@ var todo = require('../')
   , colors = require('colors')
   , program = require('commander')
   , file = null
+  , tty = require('tty')
 
 // Options
 
 program
   .version(todo.version, '-v, --version')
   .option('-l, --limit <n>', 'Limit the results output', parseInt)
-  .option('-r, --reverse', 'Oldest first')
-  .option('-c, --count', 'Output number of tasks')
+  .option('-r, --reverse', 'Reverse the sort-order')
+  .option('-c, --count', 'Supress normal output. Output number of tasks instead')
+  .option('-b, --body', 'Output the body of each task')
+  .option('-i, --id', 'Ouput the id of each task')
+  .option('-N, --no-line', 'Supress output of line-numbers.')
+  .option('-H, --no-filename', 'Supress output of filenames.')
   .option('-C, --no-color', 'Prevent colored output')
   .option('-G, --no-group', 'Prevent grouping by filename')
   .option('-q, --quiet', 'Will run without output')
@@ -50,7 +55,6 @@ program
   })
 
 // Perform a search
-// TODO Use find-command by default
 
 program
   .command('find <query>')
@@ -64,11 +68,16 @@ program
       tasks.forEach(function (task) {
         if (program.limit > 0 && i == program.limit) return false
         var msg = ''
-        if (program.group && file != task.file) {
-          msg += '\n'+task.file.toString().cyan+'\n'
+        if (program.filename) {
+          if (program.group && file != task.file) {
+            msg += '\n'+task.file.toString().cyan+'\n'
+          }
+          else if (!program.group) msg += (PWD+'/'+task.file).toString().cyan+':'
         }
-        else if (!program.group) msg += PWD+'/'+task.file.toString().cyan+':'
-        msg += task.line.toString().yellow+':'+task.title
+        if (program.id) msg += task.__uuid__.substr(0, 8).toString().magenta+':'
+        if (program.line) msg += task.line.toString().yellow+':'
+        msg += task.title
+        if (program.body && task.body.length) msg += '\n'+task.body
         console.log(msg)
         file = task.file
         i++
@@ -98,7 +107,8 @@ if (program.quiet) console.log = console.error = function () {}
 
 // Prevent colored output
 
-if (!program.color) {
+if (!program.color || !tty.isatty(process.stdout.td)) {
   String.prototype.__defineGetter__('yellow', function () { return this })
+  String.prototype.__defineGetter__('magenta', function () { return this })
   String.prototype.__defineGetter__('cyan', function () { return this })
 }
