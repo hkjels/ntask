@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8' />
+    <title>Todo - Taskmanagement, your way!</title>
+    <style type='text/css'>
+      html, body {
+        height: 100%;
+      }
+      body {
+        background: #232323;
+        color: #aaa;
+        font-family: 'Helvetica neue';
+        text-align: center;
+        text-shadow: 0 1px 2px #111;
+      }
+      a {
+        color: #ccc;
+        display: inline-block;
+        margin-right: 0.5em;
+        text-decoration: none;
+      }
+      a:hover {
+        color: #fff;
+      }
+      #wrapper {
+        margin: 0 auto;
+        max-width: 640px;
+        padding: 4em 1em;
+        text-align: left;
+      }
+      hr {
+        background-color: #161616;
+        box-shadow: 0 1px 0 #262626;
+        border: none;
+        height: 1px;
+        margin: 3em 0;
+      }
+      header {
+        font-size: 1.2em;
+        margin: 4em 0 4em;
+      }
+    </style>
+  </head>
+  <body>
+    <div id='wrapper'>
+      <header>
+        <nav>
+          <a href='./index.html'>Home</a>
+          <a href='./find.html'>Find</a>
+        </nav>
+      </header>
+<h1>Find</h1>
+
+<p><strong>The power of todo's find command is what really makes todo shine. Find any
+given task in a matter of seconds and even where to start coding it.</strong></p>
+
+<hr />
+
+<h3>@Assignee</h3>
+
+<p>The "@"-symbol is for assignee. Prefix your name with "@" and you'll get a list
+of tasks sorted by date-added that you are suppose to do.</p>
+
+<pre><code>t find "@$(whoami)"
+</code></pre>
+
+<p>Tasks that are not assigned to anyone specific will land under the assignee
+@none. This means you can easily manage a taskpool by just querying:</p>
+
+<pre><code>t find "@none"
+</code></pre>
+
+<p>You can also use the alias @unassigned</p>
+
+<hr />
+
+<h3>Labels</h3>
+
+<p>Labels come in two forms. The keyword that the task was prefixed with
+(TODO | OPTIMIZE | BUG | FIXME) and words starting with a hash-symbol. The
+latter can also have brackets that store a numeric value. This numeric value
+can be filtered and sorted upon.</p>
+
+<pre><code>t find "#pri[&gt;3]*"
+</code></pre>
+
+<p>In the example above I have suffixed the label with an asterix, that selects
+the label for sorting. This is usefull in conjunction with the --reverse flag
+for ascending sorts. You can also see that there is filtering being done using
+brackets, so labels with a numeric value of less than three will not be shown.</p>
+
+<pre><code>t find "#pri[3]"
+</code></pre>
+
+<p>This would effectively be the same as querying #pri[==3]</p>
+    </div>
+  </body>
+</html>

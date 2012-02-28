@@ -1,1 +1,112 @@
-My GitHub Page
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8' />
+    <title>Todo - Taskmanagement, your way!</title>
+    <style type='text/css'>
+      html, body {
+        height: 100%;
+      }
+      body {
+        background: #232323;
+        color: #aaa;
+        font-family: 'Helvetica neue';
+        text-align: center;
+        text-shadow: 0 1px 2px #111;
+      }
+      a {
+        color: #ccc;
+        display: inline-block;
+        margin-right: 0.5em;
+        text-decoration: none;
+      }
+      a:hover {
+        color: #fff;
+      }
+      #wrapper {
+        margin: 0 auto;
+        max-width: 640px;
+        padding: 4em 1em;
+        text-align: left;
+      }
+      hr {
+        background-color: #161616;
+        box-shadow: 0 1px 0 #262626;
+        border: none;
+        height: 1px;
+        margin: 3em 0;
+      }
+      header {
+        font-size: 1.2em;
+        margin: 4em 0 4em;
+      }
+    </style>
+  </head>
+  <body>
+    <div id='wrapper'>
+      <header>
+        <nav>
+          <a href='./index.html'>Home</a>
+          <a href='./find.html'>Find</a>
+        </nav>
+      </header>
+<h1>Todo</h1>
+
+<p><strong>Taskmanagement, your way!</strong></p>
+
+<p>For decades people have put todo's into their sourcecode, but usually they get
+left behind and forgotten about. Todo not only shines new light on these old
+bits, but it makes it easy to manage them and use them as real issue-tracking.</p>
+
+<hr />
+
+<h3>Usage: t [options] [command]</h3>
+
+<h4>Commands:</h4>
+
+<pre><code>init [path]
+
+update [path]
+
+find &lt;query&gt;
+
+gui [path] [port]
+</code></pre>
+
+<h4>Options:</h4>
+
+<pre><code>-h, --help         output usage information
+-v, --version      output the version number
+-l, --limit &lt;n&gt;    Limit the results output
+-r, --reverse      Reverse the sort-order
+-c, --count        Supress normal output. Output number of tasks instead
+
+-b, --body         Output the body of each task
+-i, --id           Ouput the id of each task
+
+-N, --no-line      Supress output of line-numbers.
+-H, --no-filename  Supress output of filenames.
+-C, --no-color     Prevent colored output
+-G, --no-group     Prevent grouping by filename
+
+-q, --quiet        Will run without output
+</code></pre>
+
+<hr />
+
+<h3>Companion apps</h3>
+
+<ul>
+<li><a href="http://github.com/hkjels/t.vim/">t.vim</a> - Use "T" directly from within vim</li>
+</ul>
+
+<hr />
+
+<h3>Contributors</h3>
+
+<ul>
+<li>Henrik Kjelsberg <a href="http://github.com/hkjels/">github</a></li>
+</ul>
+    </div>
+  </body>
+</html>
