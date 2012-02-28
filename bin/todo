@@ -16,13 +16,13 @@ program
   .version(todo.version, '-v, --version')
   .option('-l, --limit <n>', 'Limit the results output', parseInt)
   .option('-r, --reverse', 'Reverse the sort-order')
-  .option('-c, --count', 'Supress normal output. Output number of tasks instead')
+  .option('-c, --count', 'Supress normal output. Output number of tasks instead\n')
   .option('-b, --body', 'Output the body of each task')
-  .option('-i, --id', 'Ouput the id of each task')
+  .option('-i, --id', 'Ouput the id of each task\n')
   .option('-N, --no-line', 'Supress output of line-numbers.')
   .option('-H, --no-filename', 'Supress output of filenames.')
   .option('-C, --no-color', 'Prevent colored output')
-  .option('-G, --no-group', 'Prevent grouping by filename')
+  .option('-G, --no-group', 'Prevent grouping by filename\n')
   .option('-q, --quiet', 'Will run without output')
 
 // Initialize a new project

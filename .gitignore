@@ -1,7 +1,7 @@
 # Directories
-docs
-node_modules
 .todo
+node_modules
+res
 test
 
 
@@ -10,5 +10,6 @@ test
 
 
 # Files
+docs/*.html
 .DS_Store
 .todoignore

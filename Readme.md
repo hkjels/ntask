@@ -1,4 +1,4 @@
-# Todo - Work in progress (Launch @ 1st of March)
+# Todo
 
 ### Taskmanagement, your way!
 
@@ -12,7 +12,8 @@ issue-trackers, so one does not exclude the other.__
 
 Make sure you install __Todo__ globally "__-g__"
 
-	$ npm install todo -g
+_Npm installation is unfortunately not up and running at the moment_
+	$ npm install *** -g
 
 
 ## Getting started
@@ -28,7 +29,7 @@ Update taskpool
 
 Find tasks
 
-	$ t find "#todo"
+	$ t find ""
 
 
 ## Features
