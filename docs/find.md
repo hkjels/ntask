@@ -1,6 +1,6 @@
 # Find
 
-__The power of todo's find command is what really makes todo shine. Find any
+__The power of ntask´s find-command is what really makes ntask shine. Find any
 given task in a matter of seconds and even where to start coding it.__
 
 

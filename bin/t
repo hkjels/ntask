@@ -4,7 +4,7 @@
  * Module dependencies
  */
 
-var todo = require('../')
+var ntask = require('../')
   , colors = require('colors')
   , program = require('commander')
   , file = null
@@ -13,7 +13,7 @@ var todo = require('../')
 // Options
 
 program
-  .version(todo.version, '-v, --version')
+  .version(ntask.version, '-v, --version')
   .option('-l, --limit <n>', 'Limit the results output', parseInt)
   .option('-r, --reverse', 'Reverse the sort-order')
   .option('-c, --count', 'Supress normal output. Output number of tasks instead\n')
@@ -30,7 +30,7 @@ program
 program
   .command('init [path]')
   .action(function (fpath) {
-    if (todo.Project.init(fpath)) console.log('Initialized project')
+    if (ntask.Project.init(fpath)) console.log('Initialized project')
     else console.error('Project already exists')
   })
 
@@ -40,7 +40,7 @@ program
   .command('update [path]')
   .action(function (path) {
     path = [path] || [PWD]
-    todo.Taskpool.update(path, function (err, updates) {
+    ntask.Taskpool.update(path, function (err, updates) {
       if (err) return console.error('\n   '+err.message+'\n')
       var message = 'Taskpool is up to date'
       console.log('')
@@ -59,7 +59,7 @@ program
 program
   .command('find <query>')
   .action(function (query) {
-    todo.Taskpool.find(query, function (err, tasks) {
+    ntask.Taskpool.find(query, function (err, tasks) {
       if (err) return console.error('\n   '+err.message+'\n')
       if (!tasks.length && program.group) return console.log('\n   No tasks matched query\n')
       if (program.count) return console.log(tasks.length)
@@ -93,7 +93,7 @@ program
   .action(function (path, port) {
     var path = path || PWD
       , port = port || 3000
-    todo.gui(path, port)
+    ntask.gui(path, port)
   })
 
 // Parse arguments

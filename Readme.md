@@ -1,4 +1,4 @@
-# Todo
+# ntask
 
 ### Taskmanagement, your way!
 
@@ -10,10 +10,9 @@ issue-trackers, so one does not exclude the other.__
 
 ## Installation
 
-Make sure you install __Todo__ globally "__-g__"
+Make sure you install __ntask__ globally "__-g__"
 
-_Npm installation is unfortunately not up and running at the moment_
-	$ npm install *** -g
+	$ npm install ntask -g
 
 
 ## Getting started
@@ -49,9 +48,9 @@ Find tasks
 ## License
 
 > (The MIT License)
-> 
+>
 > Copyright (c) 2012 Henrik Kjelsberg &lt;hkjels@me.com&gt;
-> 
+>
 > Permission is hereby granted, free of charge, to any person obtaining
 > a copy of this software and associated documentation files (the
 > 'Software'), to deal in the Software without restriction, including
@@ -59,10 +58,10 @@ Find tasks
 > distribute, sublicense, and/or sell copies of the Software, and to
 > permit persons to whom the Software is furnished to do so, subject to
 > the following conditions:
-> 
+>
 > The above copyright notice and this permission notice shall be
 > included in all copies or substantial portions of the Software.
-> 
+>
 > THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
 > EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
 > MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
