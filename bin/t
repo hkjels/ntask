@@ -18,9 +18,9 @@ program
   .option('-r, --reverse', 'Reverse the sort-order')
   .option('-c, --count', 'Supress normal output. Output number of tasks instead\n')
 
-  .option('--label', 'Output the labels for each task')
-  .option('-b, --body', 'Output the body of each task')
-  .option('-i, --id', 'Ouput the id of each task\n')
+  .option('-L, --label', 'Output the labels for each task')
+  .option('-B, --body', 'Output the body of each task')
+  .option('-I, --id', 'Ouput the id of each task\n')
 
   .option('-N, --no-line', 'Supress output of line-numbers.')
   .option('-H, --no-filename', 'Supress output of filenames.')
