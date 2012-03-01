@@ -16,10 +16,13 @@ __Tip: Create a taskpool similar to this one at the root of your project for rap
 
 * BUG Database can end up corrupted at times #imd[2371b070]  
 
-*	TODO Closing tasks should be possible through the use of keywords (CLOSE|CLOSES|CLOSED|FIXES|FIXED)  
-	| or by querying for tasks with the a remove-flag  
+*	TODO Closing tasks should be possible through the use of keywords
+  | (CLOSE|CLOSES|CLOSED|FIXES|FIXED)  
+	| or by querying for tasks with a remove-flag  
 
 * OPTIMIZE GUI to perform somewhat realtime  
+
+* TODO Add stemming for improved fulltext searches  
 
 
 _Note: If you come up with other clever ways of organizing and using "todo", please tell me._
