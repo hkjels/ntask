@@ -13,7 +13,6 @@
   , "engines": {"node": ">= 0.4.1 <= 0.7.0"}
   , "dependencies": {
       "barricane-db": "latest"
-    , "cli-table": "latest"
     , "colors": "latest"
     , "commander": "latest"
     , "express": "latest"
@@ -22,7 +21,6 @@
     , "moment": "latest"
 	  , "nib": "latest"
 	  , "stylus": "latest"
-    , "underscore": "latest"
   }
   , "devDependencies": {
       "dox": "latest"
