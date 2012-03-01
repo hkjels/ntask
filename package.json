@@ -4,11 +4,11 @@
   , "keywords": ["todo", "task", "bug", "fixme", "issue", "tracker"]
   , "version": "0.0.3"
   , "author": "Henrik Kjelsberg <hkjels@me.com> (http://take.no/)"
-  , "homepage": "https://github.com/hkjels/ntask/"
-  , "repository": {"type": "git", "url": "git://github.com/hkjels/ntask.git"}
-  , "licenses": [{"type": "MIT", "url": "http://github.com/hkjels/ntast/master/LICENSE"}]
+  , "homepage": "https://github.com/hkjels/t/"
+  , "repository": {"type": "git", "url": "git://github.com/hkjels/t.git"}
+  , "licenses": [{"type": "MIT", "url": "http://github.com/hkjels/t/master/LICENSE"}]
   , "bin": {"t": "bin/t"}
-  , "bugs": {"url" : "http://github.com/hkjels/ntask/issues"}
+  , "bugs": {"url" : "http://github.com/hkjels/t/issues"}
   , "main": "index"
   , "engines": {"node": ">= 0.4.1 <= 0.7.0"}
   , "dependencies": {
