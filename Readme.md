@@ -12,23 +12,23 @@ issue-trackers, so one does not exclude the other.__
 
 Make sure you install __ntask__ globally "__-g__"
 
-	$ npm install ntask -g
+	λ npm install ntask -g
 
 
 ## Getting started
 
 Start tracking a project
 
-	$ cd <projectdir>
-	$ t init
+	λ cd <projectdir>
+	± t init
 
 Update taskpool
 
-	$ t update .
+	± t update .
 
 Find tasks
 
-	$ t find ""
+	± t find ""
 
 
 ## Features
