@@ -21,6 +21,7 @@
     , "moment": "latest"
 	  , "nib": "latest"
 	  , "stylus": "latest"
+	  , "underscore": "latest"
   }
   , "devDependencies": {
       "dox": "latest"
