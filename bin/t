@@ -17,12 +17,16 @@ program
   .option('-l, --limit <n>', 'Limit the results output', parseInt)
   .option('-r, --reverse', 'Reverse the sort-order')
   .option('-c, --count', 'Supress normal output. Output number of tasks instead\n')
+
+  .option('--label', 'Output the labels for each task')
   .option('-b, --body', 'Output the body of each task')
   .option('-i, --id', 'Ouput the id of each task\n')
+
   .option('-N, --no-line', 'Supress output of line-numbers.')
   .option('-H, --no-filename', 'Supress output of filenames.')
   .option('-C, --no-color', 'Prevent colored output')
   .option('-G, --no-group', 'Prevent grouping by filename\n')
+
   .option('-q, --quiet', 'Will run without output')
 
 // Initialize a new project
@@ -47,6 +51,7 @@ program
       if (updates.added.length) console.log('   '+updates.added.length+' task(s) was added')
       if (updates.modified.length) console.log('   '+updates.modified.length+' task(s) was modified')
       if (updates.removed.length) console.log('   '+updates.removed.length+' task(s) was removed')
+      if (updates.flawed.length) console.log('   '+updates.flawed.length+' task(s) was flawed')
 
       console.log('\n   '+new Array(message.length+1).join('-'))
       console.log('   '+message)
@@ -74,6 +79,7 @@ program
           }
           else if (!program.group) msg += (PWD+'/'+task.file).toString().cyan+':'
         }
+        if (program.label) msg += task.labels.join(',').replace(' ', '').grey+'\n'
         if (program.id) msg += task.__uuid__.substr(0, 8).toString().magenta+':'
         if (program.line) msg += task.line.toString().yellow+':'
         msg += task.title
@@ -105,10 +111,10 @@ program
 
 if (program.quiet) console.log = console.error = function () {}
 
-// Prevent colored output
+// Prevent styled output
 
 if (!program.color || !tty.isatty(process.stdout.td)) {
-  String.prototype.__defineGetter__('yellow', function () { return this })
-  String.prototype.__defineGetter__('magenta', function () { return this })
-  String.prototype.__defineGetter__('cyan', function () { return this })
+  ['yellow', 'magenta', 'cyan'].forEach(function (style) {
+    String.prototype.__defineGetter__(style, function () { return this })
+  });
 }
