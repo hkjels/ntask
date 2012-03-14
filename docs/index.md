@@ -19,6 +19,16 @@ bits, but it makes it easy to manage them and use them as real issue-tracking.
 ***
 
 
+### Getting started
+
+    λ cd [projectdir]
+    ± t init .
+    ± t update .
+
+
+***
+
+
 ### Usage: t [options] [command]
 
 #### Commands:

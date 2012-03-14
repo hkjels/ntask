@@ -8,7 +8,7 @@ __Tip: Create a taskpool similar to this one at the root of your project for rap
   | Could possibly be done by tracking labels for changes.  
   | Or maybe by having a unit-column. It could then be possible to use timers.  
 
-*	TODO @henrik Add #config possibilities #v[0.0.4]  
+*	TODO @hkjels Add #config possibilities #v[0.0.4]  
   | Using .todoconfig in HOME or in the project-root  
 
 * FIXME Write tests!! Ensure that old-style todo's really are logged  
