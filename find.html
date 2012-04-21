@@ -62,7 +62,7 @@ given task in a matter of seconds and even where to start coding it.</strong></p
 <h3>@Assignee</h3>
 
 <p>The "@"-symbol is for assignee. Prefix your name with "@" and you'll get a list
-of tasks sorted by date-added that you are suppose to do.</p>
+of tasks sorted by date-added, that you are suppose to do.</p>
 
 <pre><code>t find "@$(whoami)"
 </code></pre>
@@ -89,8 +89,9 @@ can be filtered and sorted upon.</p>
 
 <p>In the example above I have suffixed the label with an asterix, that selects
 the label for sorting. This is usefull in conjunction with the --reverse flag
-for ascending sorts. You can also see that there is filtering being done using
-brackets, so labels with a numeric value of less than three will not be shown.</p>
+for ascending sorts. You can also see that there is filtering being done here
+using brackets, so "pri"-labels with a numeric value of less than three will
+not be displayed.</p>
 
 <pre><code>t find "#pri[3]"
 </code></pre>
