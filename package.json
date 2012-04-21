@@ -2,7 +2,7 @@
     "name": "ntask"
   , "description": "Taskmanagement, your way!"
   , "keywords": ["todo", "task", "bug", "fixme", "issue", "tracker"]
-  , "version": "0.0.4"
+  , "version": "0.0.41"
   , "author": "Henrik Kjelsberg <hkjels@me.com> (http://take.no/)"
   , "homepage": "https://github.com/hkjels/t/"
   , "repository": {"type": "git", "url": "git://github.com/hkjels/t.git"}
