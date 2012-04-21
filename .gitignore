@@ -10,6 +10,8 @@ test
 
 
 # Files
+curses.h
 docs/*.html
+tags
 .DS_Store
 .todoignore

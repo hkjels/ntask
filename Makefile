@@ -3,18 +3,16 @@ DOCSRC = $(shell find docs -name '*.md')
 DOCTRG = $(DOCSRC:.md=.html)
 
 
-.PHONY: cleandocs docs install lint mocha
+.PHONY: cleandocs docs lint mocha
 
 
-all: lint test
+all: lint mocha
+
 
 cleandocs:
 	rm -f $(DOCTRG)
 
 docs: $(DOCTRG)
-
-install:
-	npm link
 
 lint:
 	$(BIN)/jshint ./lib/*.js --config lint.json
