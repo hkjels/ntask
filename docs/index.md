@@ -3,9 +3,10 @@
 __Taskmanagement, your way!__
 
 
-For decades people have put todo's into their sourcecode, but usually they get
-left behind and forgotten about. ntask not only shines new light on these old
-bits, but it makes it easy to manage them and use them as real issue-tracking.
+Ntask supports sorting and filtering of task-comments from your sourcecode in
+such a way that only regex elitists would be able to do in a snap.
+_The end-goal is for Ntask to be able to track all closed tasks aswell and give
+you statistics of time-used and such, ack or grep can´t help you there._
 
 
 ***
@@ -14,16 +15,6 @@ bits, but it makes it easy to manage them and use them as real issue-tracking.
 ### Installation
 
     λ npm install ntask -g
-
-
-***
-
-
-### Getting started
-
-    λ cd [projectdir]
-    ± t init .
-    ± t update .
 
 
 ***
@@ -66,6 +57,16 @@ bits, but it makes it easy to manage them and use them as real issue-tracking.
 ### Companion apps
 
 * [t.vim](http://github.com/hkjels/t.vim/) - Use "T" directly from within vim
+
+
+***
+
+
+### Contributing
+
+Ntask could really use a few more developers that knows a thing or two about
+search, statistics and issue-trackers in general. Please feel free to contact
+me or nag me with pull-requests.
 
 
 ***
