@@ -145,7 +145,7 @@ program
             if (format.indexOf(key) != -1) {
               if (param == 'keyword') format = format.replace(key, colorKeyword(task[param]))
               else if (param == 'hash') format = format.replace(key, task.labels.join(',')[param])
-              else format = format.replace(key, task[param][param])
+              else format = format.replace(key, task[param].toString()[param])
             }
           })
 
