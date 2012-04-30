@@ -7,38 +7,81 @@
 var ntask = require('../')
   , colors = require('colors')
   , program = require('commander')
-  , file = null
   , tty = require('tty')
 
-// Options
+/**
+ * Options   t --help
+ */
 
 program
   .version(ntask.version, '-v, --version')
-  .option('-l, --limit <n>', 'Limit the results output', parseInt)
-  .option('-r, --reverse', 'Reverse the sort-order')
-  .option('-c, --count', 'Supress normal output. Output number of tasks instead\n')
+  .option('-f, --format [string]', 'Custom format', '%K %T')
+  .option('-r, --reverse', 'Reverse sort-order')
+  .option('-l, --limit <n>', 'Limit the results outputted', parseInt)
+  .option('-s, --stats', 'Supresses normal output. Outputs statistics instead\n')
 
-  .option('-L, --label', 'Output the labels for each task')
-  .option('-B, --body', 'Output the body of each task')
-  .option('-I, --id', 'Ouput the id of each task\n')
-
-  .option('-N, --no-line', 'Supress output of line-numbers.')
-  .option('-H, --no-filename', 'Supress output of filenames.')
   .option('-C, --no-color', 'Prevent colored output')
-  .option('-G, --no-group', 'Prevent grouping by filename\n')
+  .option('-G, --no-group', 'Prevent grouping by filename')
+  .option('-H, --no-filename', 'Supress output of filenames\n')
 
   .option('-q, --quiet', 'Will run without output')
 
-// Initialize a new project
+/**
+ * Colortheme
+ */
+
+var theme = {
+  'assignee': 'cyan'
+  ,'body': 'white'
+  ,'filename': 'grey'
+  ,'hash': 'grey'
+  ,'id': 'magenta'
+  ,'line': 'cyan'
+  ,'lb': 'red'
+  ,'ld': 'green'
+  ,'lf': 'yellow'
+  ,'lo': 'cyan'
+  ,'lr': 'magenta'
+  ,'lt': 'green'
+  ,'lx': 'blue'
+  ,'title': 'white'
+}
+colors.setTheme(theme)
+
+/**
+ * Color task-keyword
+ *
+ * @param {String} keyword
+ * @return {String}
+ */
+
+function colorKeyword (keyword) {
+  switch (keyword) {
+    case 'BUG': return keyword.lb
+    case 'DONE': return '√'.ld
+    case 'FIXME': return keyword.lf
+    case 'OPTIMIZE': return keyword.lo
+    case 'REVIEW': return keyword.lr
+    case 'TODO': return keyword.lt
+    case 'XXX': return keyword.lx
+  }
+}
+
+/**
+ * Initialize a new project
+ */
 
 program
   .command('init [path]')
   .action(function (path) {
-    if (ntask.Project.init(path)) console.log('Initialized project')
-    else console.error('Project already exists')
+    if (ntask.Project.init(path)) console.log('\n    Initialized project'.green+'\n')
+    else console.error('\n    Project already exists'.red+'\n')
   })
 
-// Update project
+
+/**
+ * Update project-taskpool
+ */
 
 program
   .command('update [path]')
@@ -59,40 +102,67 @@ program
     })
   })
 
-// Perform a search
+/**
+ * Find any given task
+ */
 
 program
   .command('find <query>')
   .action(function (query) {
+    // Used for grouping tasks by file
+    var file = null
+
     ntask.Taskpool.find(query, function (err, tasks) {
       if (err) return console.error('\n   '+err.message+'\n')
       if (!tasks.length && program.group) return console.log('\n   No tasks matched query\n')
-      if (program.count) return console.log(tasks.length)
+
+      // Display statistics about pool
+      if (program.stats) return console.log(tasks.length)
+
+      // Reverse pool
       if (program.reverse) tasks = tasks.reverse()
-      var i = 0
-      tasks.forEach(function (task) {
+
+      // Loop through all the tasks in the pool
+      for (var i = 0, c = tasks.length; i < c; i++) {
+        var task = tasks[i]
+            msg = ''
+
+        // Limit the number of tasks to output
         if (program.limit > 0 && i == program.limit) return false
-        var msg = ''
+
         if (program.filename) {
           if (program.group && file != task.file) {
-            msg += '\n'+task.file.toString().cyan+'\n'
+            msg += '\n'+task.file.toString().filename+'\n'
           }
-          else if (!program.group) msg += (PWD+'/'+task.file).toString().cyan+':'
+          else if (!program.group) msg += (PWD+'/'+task.file).toString().filename+':'
         }
-        if (program.label) msg += task.labels.join(',').replace(' ', '').grey+'\n'
-        if (program.id) msg += task.__uuid__.substr(0, 8).toString().magenta+':'
-        if (program.line) msg += task.line.toString().yellow+':'
-        msg += task.title
-        if (program.body && task.body.length) msg += '\n'+task.body
+
+        msg+= (function (task, format) {
+          var params = ['assignee','body','id','keyword','hash','line','title']
+
+          params.forEach(function (param) {
+            var key = '%'+param[0].toUpperCase()
+            if (format.indexOf(key) != -1) {
+              if (param == 'keyword') format = format.replace(key, colorKeyword(task[param]))
+              else if (param == 'hash') format = format.replace(key, task.labels.join(',')[param])
+              else format = format.replace(key, task[param][param])
+            }
+          })
+
+          return format.replace(/\\n/g, '\n')
+        })(task, program.format)
+
+        // Ouput message
         console.log(msg)
         file = task.file
-        i++
-      })
+      }
       if (program.group) console.log('')
     })
   })
 
-// Web interface
+/**
+ * Web interface
+ */
 
 program
   .command('gui [path] [port]')
@@ -102,19 +172,23 @@ program
     ntask.gui(path, port)
   })
 
+
 // Parse arguments
 
 program
   .parse(process.argv)
 
+
 // Prevent output
+// TODO Research if there's a less obtrusive way of preventing output
 
 if (program.quiet) console.log = console.error = function () {}
+
 
 // Prevent styled output
 
 if (!program.color || !tty.isatty(process.stdout.td)) {
-  ['yellow', 'magenta', 'cyan'].forEach(function (style) {
-    String.prototype.__defineGetter__(style, function () { return this })
-  });
+  for (var attr in theme) {
+    String.prototype.__defineGetter__(attr, function () { return this })
+  }
 }

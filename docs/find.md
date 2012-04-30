@@ -43,3 +43,28 @@ not be displayed.
     t find "#pri[3]"
 
 This would effectively be the same as querying #pri[==3]
+
+
+
+***
+
+### Options
+
+
+    -f, --format [string]
+
+    The format-string is a sprintf-like implementation of all the properties of a task.
+
+    %A - Assignee
+    %B - Body
+    %H - Label (#hash)
+    %I - Id
+    %K - Keyword
+    %L - Line
+    %T - Title
+
+
+    -r, --reverse
+
+    The reverse-option will reverse the pool of your find query. The "*"-suffix
+    of a label will select the label for sorting.
