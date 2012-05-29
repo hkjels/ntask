@@ -1,28 +1,46 @@
+.PHONY: all test lint docs clean mocha with cream and sugar
+
+
+# Paths
+
 BIN = node_modules/.bin
 DOCSRC = $(shell find docs -name '*.md')
 DOCTRG = $(DOCSRC:.md=.html)
 
 
-.PHONY: cleandocs docs lint mocha
+# I love it when 'all' is true
 
+all:
+	@true
 
-all: lint mocha
+test:
+	@$(BIN)/mocha --growl --reporter 'dot' --require should ./test/*.test.js
 
-
-cleandocs:
-	rm -f $(DOCTRG)
+lint:
+	@$(BIN)/jshint ./lib/*.js
 
 docs: $(DOCTRG)
 
-lint:
-	$(BIN)/jshint ./lib/*.js --config lint.json
-
-mocha:
-	rm -Rf test/.todo
-	$(BIN)/mocha --growl --reporter 'dot' --require should ./test/*.test.js
+clean:
+	rm -f $(DOCTRG)
 
 %.html: %.md
 	@echo "... $< -> $@"
 	@markdown $< \
 	  | cat docs/layout/head.html - docs/layout/foot.html \
 	  > $@
+
+
+# Aliases
+
+mocha: test
+
+with:
+	@true
+
+cream: lint
+
+and:
+	@true
+
+sugar: docs
