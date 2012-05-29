@@ -2,7 +2,7 @@
     "name": "ntask"
   , "description": "Taskmanagement, your way!"
   , "keywords": ["todo", "task", "bug", "fixme", "issue", "tracker"]
-  , "version": "0.0.42"
+  , "version": "0.0.43"
   , "author": "Henrik Kjelsberg <hkjels@me.com> (http://take.no/)"
   , "homepage": "https://github.com/hkjels/t/"
   , "repository": {"type": "git", "url": "git://github.com/hkjels/t.git"}
@@ -19,9 +19,10 @@
     , "jade": "0.25.0"
     , "minimatch": "0.2.4"
     , "moment": "1.5.1"
-	  , "nib": "0.4.1"
-	  , "stylus": "0.25.0"
-	  , "underscore": "1.3.3"
+    , "nib": "0.4.1"
+    , "posix": "0.0.7"
+    , "stylus": "0.25.0"
+    , "underscore": "1.3.3"
   }
   , "devDependencies": {
       "cdir": "latest"

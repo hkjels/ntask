@@ -11,7 +11,7 @@ __Tip: Create a taskpool similar to this one at the root of your project for rap
 *	TODO @hkjels Add #config possibilities #v[0.0.4]  
   | Using .todoconfig in HOME or in the project-root  
 
-* FIXME Write tests!! Ensure that old-style todo's really are logged  
+* FIXME Write #test !! Ensure that #old-style #tasks really are logged  
   | I have heard that code-coverage is a good idea aswell  
 
 * BUG Database can end up corrupted at times #imd[2371b070]  

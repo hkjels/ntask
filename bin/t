@@ -86,7 +86,7 @@ program
 program
   .command('update [path]')
   .action(function (path) {
-    path = [path] || [PWD]
+    path = [path || PWD]
     ntask.Taskpool.update(path, function (err, updates) {
       if (err) return console.error('\n   '+err.message+'\n')
       var message = 'Taskpool is up to date'
