@@ -27,8 +27,8 @@ clean:
 %.html: %.md
 	@echo "... $< -> $@"
 	@markdown $< \
-	  | cat docs/layout/head.html - docs/layout/foot.html \
-	  > $@
+		| cat docs/layout/head.html - docs/layout/foot.html \
+		> $@
 
 
 # Aliases

@@ -74,7 +74,9 @@ function colorKeyword (keyword) {
 program
   .command('init [path]')
   .action(function (path) {
-    if (ntask.Project.init(path)) console.log('\n    Initialized project'.green+'\n')
+    if (ntask.Project.init(path)) {
+      console.log('\n    Initialized project'.green+'\n')
+    }
     else console.error('\n    Project already exists'.red+'\n')
   })
 
@@ -90,11 +92,14 @@ program
     ntask.Taskpool.update(path, function (err, updates) {
       if (err) return console.error('\n   '+err.message+'\n')
       var message = 'Taskpool is up to date'
+        , states = ['added', 'modified', 'removed', 'flawed']
+
       console.log('')
-      if (updates.added.length) console.log('   '+updates.added.length+' task(s) was added')
-      if (updates.modified.length) console.log('   '+updates.modified.length+' task(s) was modified')
-      if (updates.removed.length) console.log('   '+updates.removed.length+' task(s) was removed')
-      if (updates.flawed.length) console.log('   '+updates.flawed.length+' task(s) was flawed')
+      states.forEach(function (state) {
+        if (updates[state].length) {
+          console.log('   '+updates[state].length+' task(s) was '+state)
+        }
+      })
 
       console.log('\n   '+new Array(message.length+1).join('-'))
       console.log('   '+message)
@@ -117,7 +122,11 @@ program
       if (!tasks.length && program.group) return console.log('\n   No tasks matched query\n')
 
       // Display statistics about pool
-      if (program.stats) return console.log(tasks.length)
+      if (program.stats) {
+        var stats = '\n * Project has '+tasks.length+' planned tasks.\n'
+                  + '\n   More stats to come in future versions of ntask.\n'
+        return console.log(stats)
+      }
 
       // Reverse pool
       if (program.reverse) tasks = tasks.reverse()
@@ -159,19 +168,6 @@ program
       if (program.group) console.log('')
     })
   })
-
-/**
- * Web interface
- */
-
-program
-  .command('gui [path] [port]')
-  .action(function (path, port) {
-    var path = path || PWD
-      , port = port || 3000
-    ntask.gui(path, port)
-  })
-
 
 // Parse arguments
 

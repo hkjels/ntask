@@ -1,9 +1,0 @@
-header
-  - if (typeof task !== 'undefined')
-    h1.cabin= task.labels[0]
-    a(href='/').back &larr; Back
-  - else
-    h1= meta.name
-    form#search(action='/', method='post')
-      fieldset
-        input#filter(name='filter', type='text', placeholder='Filter tasks', value=filter || null)

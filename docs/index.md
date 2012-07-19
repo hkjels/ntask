@@ -30,8 +30,6 @@ you statistics of time-used and such, ack or grep can´t help you there._
 
     find <query>
 
-    gui [path] [port]
-
 #### Options:
 
     -h, --help         output usage information

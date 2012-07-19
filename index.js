@@ -1,3 +1,4 @@
+
 /*!
  * Ntask
  * Copyright(c) 2012 Henrik Kjelsberg <hkjels@me.com>
@@ -5,3 +6,4 @@
  */
 
 module.exports = require('./lib/ntask')
+

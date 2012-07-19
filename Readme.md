@@ -1,4 +1,6 @@
-# ntask
+
+ntask
+=====
 
 ### Taskmanagement, your way!
 
@@ -12,7 +14,7 @@ issue-trackers, so one does not exclude the other.__
 
 Make sure you install __ntask__ globally "__-g__"
 
-	λ npm install ntask -g
+	λ npm install -g ntask
 
 
 ## Getting started
@@ -20,22 +22,22 @@ Make sure you install __ntask__ globally "__-g__"
 Start tracking a project
 
 	λ cd <projectdir>
-	± t init
+	λ t init
 
 Update taskpool
 
-	± t update .
+	λ t update .
 
 Find tasks
 
-	± t find ""
+	λ t find ""
 
 
 ## Features
 
 *	Flexible search-syntax
 *	Compatible with github-issues
-*	Web interface
+*	~~Web interface~~
 
 
 ## Constributors
