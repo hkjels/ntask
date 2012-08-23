@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/hkjels/t.png)](http://travis-ci.org/hkjels/t)
 
 ntask
 =====
