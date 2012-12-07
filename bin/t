@@ -112,10 +112,11 @@ program
  */
 
 program
-  .command('find <query>')
+  .command('find [query]')
   .action(function (query) {
     // Used for grouping tasks by file
     var file = null
+    query = query || ''
 
     ntask.Taskpool.find(query, function (err, tasks) {
       if (err) return console.error('\n   '+err.message+'\n')

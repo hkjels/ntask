@@ -20,9 +20,9 @@ __Tip: Create a taskpool similar to this one at the root of your project for rap
   | (CLOSE|CLOSES|CLOSED|FIXES|FIXED)  
   | or by querying for tasks with a remove-flag  
 
-* OPTIMIZE GUI to perform somewhat realtime  
-
 * TODO Add stemming for improved fulltext searches  
+
+* TODO Add `-m, --mine` support  
 
 
 _Note: If you come up with other clever ways of organizing and using "todo",
