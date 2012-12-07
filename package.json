@@ -33,7 +33,7 @@
   "dependencies": {
     "barricane-db": "0.2.x",
     "colors": "0.6.x",
-    "commander": "1.0.x",
+    "commander": "1.1.x",
     "minimatch": "0.2.x",
     "moment": "1.7.x",
     "porter-stemmer": "0.9.x",
