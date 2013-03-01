@@ -1,13 +1,13 @@
-#!/usr/bin/env node
+#!/usr/bin/env NODE_PATH=./lib node
 
 /**
  * Module dependencies
  */
 
-var ntask = require('../')
-  , colors = require('colors')
-  , program = require('commander')
-  , tty = require('tty')
+var ntask = require('../'),
+    colors = require('colors'),
+    program = require('commander'),
+    tty = require('tty');
 
 /**
  * Options   t --help
@@ -24,29 +24,29 @@ program
   .option('-G, --no-group', 'Prevent grouping by filename')
   .option('-H, --no-filename', 'Supress output of filenames\n')
 
-  .option('-q, --quiet', 'Will run without output')
+  .option('-q, --quiet', 'Will run without output');
 
 /**
  * Colortheme
  */
 
 var theme = {
-  'assignee': 'cyan'
-  ,'body': 'white'
-  ,'filename': 'grey'
-  ,'hash': 'grey'
-  ,'id': 'magenta'
-  ,'line': 'cyan'
-  ,'lb': 'red'
-  ,'ld': 'green'
-  ,'lf': 'yellow'
-  ,'lo': 'cyan'
-  ,'lr': 'magenta'
-  ,'lt': 'green'
-  ,'lx': 'blue'
-  ,'title': 'white'
-}
-colors.setTheme(theme)
+  'assignee': 'cyan',
+  'body': 'white',
+  'filename': 'grey',
+  'hash': 'grey',
+  'id': 'magenta',
+  'line': 'cyan',
+  'lb': 'red',
+  'ld': 'green',
+  'lf': 'yellow',
+  'lo': 'cyan',
+  'lr': 'magenta',
+  'lt': 'green',
+  'lx': 'blue',
+  'title': 'white'
+};
+colors.setTheme(theme);
 
 /**
  * Color task-keyword
@@ -57,13 +57,13 @@ colors.setTheme(theme)
 
 function colorKeyword (keyword) {
   switch (keyword) {
-    case 'BUG': return keyword.lb
-    case 'DONE': return '√'.ld
-    case 'FIXME': return keyword.lf
-    case 'OPTIMIZE': return keyword.lo
-    case 'REVIEW': return keyword.lr
-    case 'TODO': return keyword.lt
-    case 'XXX': return keyword.lx
+    case 'BUG': return keyword.lb;
+    case 'DONE': return '√'.ld;
+    case 'FIXME': return keyword.lf;
+    case 'OPTIMIZE': return keyword.lo;
+    case 'REVIEW': return keyword.lr;
+    case 'TODO': return keyword.lt;
+    case 'XXX': return keyword.lx;
   }
 }
 
@@ -75,10 +75,11 @@ program
   .command('init [path]')
   .action(function (path) {
     if (ntask.Project.init(path)) {
-      console.log('\n    Initialized project'.green+'\n')
+      console.log('\n    Initialized project'.green+'\n');
+    } else {
+      console.error('\n    Project already exists'.red+'\n');
     }
-    else console.error('\n    Project already exists'.red+'\n')
-  })
+  });
 
 
 /**
@@ -88,24 +89,24 @@ program
 program
   .command('update [path]')
   .action(function (path) {
-    path = [path || PWD]
+    path = [path || PWD];
     ntask.Taskpool.update(path, function (err, updates) {
-      if (err) return console.error('\n   '+err.message+'\n')
-      var message = 'Taskpool is up to date'
-        , states = ['added', 'modified', 'removed', 'flawed']
+      if (err) return console.error('\n   '+err.message+'\n');
+      var message = 'Taskpool is up to date',
+          states = ['added', 'modified', 'removed', 'flawed'];
 
-      console.log('')
-      states.forEach(function (state) {
+      states.forEach(function (state, i) {
         if (updates[state].length) {
-          console.log('   '+updates[state].length+' task(s) was '+state)
+          if (i == 0) console.log('');
+          console.log('   '+updates[state].length+' task(s) was '+state);
         }
-      })
+      });
 
-      console.log('\n   '+new Array(message.length+1).join('-'))
-      console.log('   '+message)
-      console.log('   '+new Array(message.length+1).join('-')+'\n')
-    })
-  })
+      console.log('\n   '+new Array(message.length+1).join('-'));
+      console.log('   '+message);
+      console.log('   '+new Array(message.length+1).join('-')+'\n');
+    });
+  });
 
 /**
  * Find any given task
@@ -115,82 +116,96 @@ program
   .command('find [query]')
   .action(function (query) {
     // Used for grouping tasks by file
-    var file = null
-    query = query || ''
+    var file = null;
+    query = query || '';
 
     ntask.Taskpool.find(query, function (err, tasks) {
-      if (err) return console.error('\n   '+err.message+'\n')
-      if (!tasks.length && program.group) return console.log('\n   No tasks matched query\n')
+      if (err) return console.error('\n   '+err.message+'\n');
+      if (!tasks.length && program.group) {
+        return console.log('\n   No tasks matched query\n');
+      }
 
       // Display statistics about pool
       if (program.stats) {
-        var stats = '\n * Project has '+tasks.length+' planned tasks.\n'
-                  + '\n   More stats to come in future versions of ntask.\n'
-        return console.log(stats)
+        var stats = '\n  '+tasks.length+' tasks matched your query.\n',
+            assignees = [];
+        tasks.forEach(function(task) {
+          if (assignees.indexOf(task.assignee) == -1) {
+            assignees.push(task.assignee);
+          }
+        });
+        stats+= '  They are assigned to: ' + assignees.join(', ');
+        console.log(stats);
+        return console.log('');
       }
 
       // Reverse pool
-      if (program.reverse) tasks = tasks.reverse()
+      if (program.reverse) tasks = tasks.reverse();
 
       // Loop through all the tasks in the pool
       for (var i = 0, c = tasks.length; i < c; i++) {
-        var task = tasks[i]
-            msg = ''
+        var task = tasks[i],
+            msg = '';
 
         // Limit the number of tasks to output
-        if (program.limit > 0 && i == program.limit) return false
+        if (program.limit > 0 && i == program.limit) return false;
 
         if (program.filename) {
           if (program.group && file != task.file) {
-            msg += '\n'+task.file.toString().filename+'\n'
+            msg += '\n'+task.file.toString().filename+'\n';
+          } else if (!program.group) {
+            msg += (PWD+'/'+task.file).toString().filename+':';
           }
-          else if (!program.group) msg += (PWD+'/'+task.file).toString().filename+':'
         }
 
         msg+= (function (task, format) {
-          var params = ['assignee','body','id','keyword','hash','line','title']
+          var params = ['assignee','body','id','keyword','hash','line','title'];
 
           params.forEach(function (param) {
-            var key = '%'+param[0].toUpperCase()
+            var key = '%'+param[0].toUpperCase();
             if (format.indexOf(key) != -1) {
-              if (param == 'keyword') format = format.replace(key, colorKeyword(task[param]))
-              else if (param == 'hash') format = format.replace(key, task.labels.join(',')[param])
-              else format = format.replace(key, task[param].toString()[param])
+              switch (param) {
+                case 'keyword':
+                  format = format.replace(key, colorKeyword(task[param]));
+                  break;
+                case 'hash':
+                  format = format.replace(key, task.labels.join(',')[param]);
+                  break;
+                default:
+                  format = format.replace(key, task[param].toString()[param]);
+              }
             }
-          })
+          });
 
-          return format.replace(/\\n/g, '\n')
-        })(task, program.format)
+          return format.replace(/\\n/g, '\n');
+        })(task, program.format);
 
         // Ouput message
-        console.log(msg)
-        file = task.file
+        console.log(msg);
+        file = task.file;
       }
-      if (program.group) console.log('')
-    })
-  })
+      if (program.group) console.log('');
+    });
+  });
 
 // Parse arguments
 
 program
-  .parse(process.argv)
-
+  .parse(process.argv);
 
 // Prevent output
-// TODO Research if there's a less obtrusive way of preventing output
 
-if (program.quiet) console.log = console.error = function () {}
-
+if (program.quiet) console.log = console.error = function () {};
 
 // Prevent styled output
 
 if (!program.color || !tty.isatty(process.stdout.td)) {
   for (var attr in theme) {
-    String.prototype.__defineGetter__(attr, function () { return this })
+    String.prototype.__defineGetter__(attr, function () { return this; });
   }
 }
 
 // Output usage if no arguments are passed
 
-if (process.argv.length <= 2) program.help()
+if (process.argv.length <= 2) program.help();
 

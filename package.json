@@ -34,6 +34,7 @@
     "barricane-db": "0.2.x",
     "colors": "0.6.x",
     "commander": "1.1.x",
+    "isBinaryFile": "~0.1.5",
     "minimatch": "0.2.x",
     "moment": "1.7.x",
     "porter-stemmer": "0.9.x",
