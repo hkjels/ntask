@@ -1,8 +1,8 @@
-
 ntask
 =====
 
 ### Taskmanagement, your way!
+![Still maintained](http://stillmaintained.com/stillmaintained/stillmaintained.png "Still maintained")
 
 __Main goal is to make your inline-todos more useful. This is achieved by 
 giving your task labels; With labels you can easily sort and filter your tasks 
