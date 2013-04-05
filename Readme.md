@@ -1,5 +1,5 @@
-
 # ntask
+[![Project Status](http://stillmaintained.com/hkjels/t.png)](http://stillmaintained.com/hkjels/t)
 
 __Taskmanagement, your way!__
 
