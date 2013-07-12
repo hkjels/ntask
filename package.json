@@ -9,7 +9,7 @@
     "issue",
     "tracker"
   ],
-  "version": "0.0.45-1",
+  "version": "0.0.46",
   "author": "Henrik Kjelsberg <hkjels@me.com> (http://take.no/)",
   "homepage": "https://github.com/hkjels/ntask/",
   "repository": {
@@ -33,13 +33,13 @@
   "dependencies": {
     "barricane-db": "0.2.x",
     "colors": "0.6.x",
-    "commander": "1.1.x",
-    "isBinaryFile": "~0.1.5",
+    "commander": "1.3.x",
+    "isbinaryfile": "~0.1.9",
     "minimatch": "0.2.x",
-    "moment": "1.7.x",
+    "moment": "2.1.x",
     "porter-stemmer": "0.9.x",
-    "posix": "0.0.10",
-    "underscore": "1.4.x"
+    "posix": "1.0.2",
+    "underscore": "1.5.x"
   },
   "devDependencies": {
     "dox": "*",
